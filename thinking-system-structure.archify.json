@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Thinking System: vault structure",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "views": [
+      {
+        "id": "ingest-path",
+        "label": "Ingest path",
+        "focus": [
+          "you",
+          "raw",
+          "claude",
+          "wiki",
+          "indexlog"
+        ],
+        "note": "A source you collect becomes compiled pages, with the catalog and log updated."
+      },
+      {
+        "id": "read-path",
+        "label": "Read and think",
+        "focus": [
+          "wiki",
+          "obsidian",
+          "inbox",
+          "mine"
+        ],
+        "note": "You read what was compiled and keep your own conclusions in a layer Claude cannot rewrite."
+      },
+      {
+        "id": "control",
+        "label": "Control layer",
+        "focus": [
+          "schema",
+          "settings",
+          "claude"
+        ],
+        "note": "Instructions guide Claude; permission rules enforce the zones."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "you",
+      "type": "external",
+      "label": "You",
+      "sublabel": "Product Owner",
+      "pos": [
+        40,
+        300
+      ],
+      "size": [
+        150,
+        76
+      ]
+    },
+    {
+      "id": "raw",
+      "type": "database",
+      "label": "raw/",
+      "sublabel": "your sources",
+      "pos": [
+        260,
+        150
+      ],
+      "size": [
+        160,
+        68
+      ],
+      "tag": "immutable"
+    },
+    {
+      "id": "schema",
+      "type": "security",
+      "label": "CLAUDE.md + system/",
+      "sublabel": "rules and context",
+      "pos": [
+        510,
+        140
+      ],
+      "size": [
+        200,
+        76
+      ]
+    },
+    {
+      "id": "indexlog",
+      "type": "database",
+      "label": "index.md + log.md",
+      "sublabel": "catalog and history",
+      "pos": [
+        920,
+        150
+      ],
+      "size": [
+        170,
+        68
+      ]
+    },
+    {
+      "id": "claude",
+      "type": "backend",
+      "label": "Claude Code",
+      "sublabel": "ingest · query · lint",
+      "pos": [
+        510,
+        290
+      ],
+      "size": [
+        200,
+        92
+      ]
+    },
+    {
+      "id": "wiki",
+      "type": "database",
+      "label": "wiki/",
+      "sublabel": "compiled pages",
+      "pos": [
+        920,
+        296
+      ],
+      "size": [
+        170,
+        80
+      ],
+      "tag": "Claude writes"
+    },
+    {
+      "id": "obsidian",
+      "type": "frontend",
+      "label": "Obsidian",
+      "sublabel": "reading surface",
+      "pos": [
+        1165,
+        296
+      ],
+      "size": [
+        155,
+        80
+      ]
+    },
+    {
+      "id": "settings",
+      "type": "security",
+      "label": ".claude/settings.json",
+      "sublabel": "permission rules",
+      "pos": [
+        510,
+        456
+      ],
+      "size": [
+        200,
+        76
+      ]
+    },
+    {
+      "id": "inbox",
+      "type": "messagebus",
+      "label": "mine/drafts/",
+      "sublabel": "insight drafts",
+      "pos": [
+        920,
+        462
+      ],
+      "size": [
+        170,
+        68
+      ]
+    },
+    {
+      "id": "mine",
+      "type": "database",
+      "label": "mine/",
+      "sublabel": "insights and decisions",
+      "pos": [
+        1165,
+        458
+      ],
+      "size": [
+        155,
+        84
+      ],
+      "tag": "yours"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Your Windows PC · vault in git",
+      "wraps": [
+        "raw",
+        "schema",
+        "indexlog",
+        "claude",
+        "wiki",
+        "obsidian",
+        "settings",
+        "inbox",
+        "mine"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "Claude writes here unprompted",
+      "wraps": [
+        "indexlog",
+        "wiki",
+        "inbox"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "collect",
+      "from": "you",
+      "to": "raw",
+      "label": "collects sources",
+      "variant": "emphasis",
+      "labelAt": [
+        225,
+        248
+      ]
+    },
+    {
+      "id": "ask",
+      "from": "you",
+      "to": "claude",
+      "label": "asks; runs the operations",
+      "variant": "emphasis",
+      "labelAt": [
+        350,
+        344
+      ]
+    },
+    {
+      "id": "read-raw",
+      "from": "raw",
+      "to": "claude",
+      "label": "reads, never edits"
+    },
+    {
+      "id": "compile",
+      "from": "claude",
+      "to": "wiki",
+      "label": "compiles pages",
+      "variant": "emphasis",
+      "labelAt": [
+        872,
+        330
+      ]
+    },
+    {
+      "id": "catalog",
+      "from": "claude",
+      "to": "indexlog",
+      "label": "reads first, then updates",
+      "labelAt": [
+        820,
+        176
+      ]
+    },
+    {
+      "id": "render",
+      "from": "wiki",
+      "to": "obsidian",
+      "label": "you read"
+    },
+    {
+      "id": "drafts",
+      "from": "claude",
+      "to": "inbox",
+      "label": "proposes insight drafts",
+      "variant": "dashed",
+      "labelAt": [
+        820,
+        504
+      ]
+    },
+    {
+      "id": "accept",
+      "from": "inbox",
+      "to": "mine",
+      "label": "you accept"
+    },
+    {
+      "id": "write-mine",
+      "from": "obsidian",
+      "to": "mine",
+      "label": "you write here",
+      "labelAt": [
+        1242,
+        418
+      ]
+    },
+    {
+      "id": "rules",
+      "from": "schema",
+      "to": "claude",
+      "label": "loaded each session",
+      "variant": "security",
+      "labelAt": [
+        610,
+        250
+      ]
+    },
+    {
+      "id": "gate",
+      "from": "settings",
+      "to": "claude",
+      "label": "blocks raw/; gates mine/",
+      "variant": "security",
+      "labelAt": [
+        610,
+        420
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Three layers",
+      "items": [
+        "raw/ holds sources; Claude reads them and is blocked from editing",
+        "wiki/ is compiled and maintained by Claude",
+        "mine/ holds your conclusions; Claude drafts into mine/drafts/ only"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Three operations",
+      "items": [
+        "Ingest: one source becomes a summary plus updated entity and concept pages",
+        "Query: read the catalog first, answer with citations",
+        "Lint: contradictions, uncited claims, orphans, gaps",
+        "Each runs from its own input zone in inbox/"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "What keeps it honest",
+      "items": [
+        "Every wiki claim cites a file in raw/",
+        "A wiki page never cites another wiki page as evidence",
+        "Permission rules enforce the zones; manual approval elsewhere",
+        "git history makes every change reviewable and reversible"
+      ]
+    }
+  ]
+}
