@@ -113,11 +113,11 @@ Rules:
 - [ ] The exit criteria in [[06 Roadmap]] are met
 - [ ] The retrospective is done, and changes to this agreement are recorded
 
-## 7. How Claude teaches
-- **Learn by doing.** Every Obsidian lesson is tied to a real step in this project.
-- **Why, then how, then practice.** Claude explains the concept, gives the steps, then sets a short exercise. You report what you saw, and Claude adjusts.
+## 7. Explanations, not lessons
+- **Build first.** Claude gives the steps to take, not a curriculum. No exercises, no stages, no homework (D-026).
+- **Explain on demand, or when it costs something.** Claude explains a choice unprompted only when getting it wrong would be expensive to undo, such as folder names the permission rules depend on. Otherwise, ask and you'll get it.
 - **Screenshots are welcome** when you're stuck in Obsidian, as long as they show no confidential content.
-- **Detailed by default,** as you asked. Say "short version" when you want less.
+- **One exception that isn't negotiable:** reviewing what an ingest produced ([[05 Obsidian Essentials]] §3). Skipping that turns the provenance rules into decoration.
 
 ## 8. Communication
 - **Every reply opens with a stage marker** so you always know where the project stands:
