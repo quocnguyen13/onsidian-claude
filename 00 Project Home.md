@@ -69,3 +69,4 @@ These notes use Obsidian's own syntax, so reading them is your first lesson:
 | 1.1 | 2026-09-19 | **Documents 00–09 accepted** and promoted to `working`. Doc 13 (Input Zones) added: one input door per operation, all run inside Claude. |
 | 1.2 | 2026-09-19 | Input zones accepted (D-023 to D-025); draft queue renamed `mine/drafts/`; M0 closed and handover written |
 | 1.3 | 2026-09-19 | Obsidian curriculum removed (D-026): doc 05 becomes a reference page, goal G5 narrowed to verification (D-027), module estimates cut |
+| 1.4 | 2026-09-21 | Documents moved to a private GitHub repo synced into project knowledge (D-028); the repo is now the master copy; Q-014 opened |

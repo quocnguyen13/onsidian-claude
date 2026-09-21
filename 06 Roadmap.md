@@ -42,11 +42,12 @@ One chat per module ([[09 Working Agreement]] §4). Estimates assume more than 6
 | **M7 – Product-Owner Workflows** | The system supports real work | Doc 11 (Playbook); skills for meeting notes to decisions, stakeholder briefs, prioritization reasoning | 3 workflows used weekly for 4 weeks | 4 weeks (set by the calendar) |
 | **M8 – Retrospective and Governance** | Decide what comes next, and unpark the rules | Retrospective; doc 12 (Data Governance); Phase 5 scope | Doc 12 written before any work material enters the vault | 1 week |
 
-**Parked until M8:** bank data governance, anything on a bank device, work systems. **Candidates for later:** the vault in a private GitHub repo connected to this Project's knowledge (D-026 pending), a local Markdown search tool if `index.md` stops scaling, phone capture and sync, a hook that enforces page status, a scheduled weekly digest.
+**Parked until M8:** bank data governance, anything on a bank device, work systems. **Candidates for later:** a local Markdown search tool if `index.md` stops scaling, phone capture and sync, a hook that enforces page status, a scheduled weekly digest.
 
 ## 3. M0 closed on 2026-09-19
 - [x] Documents 00–09 and 13 accepted
 - [x] Decisions D-001 to D-025 accepted
 - [x] Q-005 to Q-007 settled or deferred; Q-013 (first sources) moves to the start of M3
 - [x] Handover written: [[14 M0 Handover]]
-- [ ] **Next:** open the `M1 – Vault and Git` chat with the handover
+- [x] Documents moved to a private GitHub repo synced into project knowledge (D-028)
+- [ ] **Next:** M1 in progress; decide Q-014 at its close
